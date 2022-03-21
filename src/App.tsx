@@ -1,12 +1,11 @@
-import React, { ReactElement } from "react";
-import { Container, Typography } from "@material-ui/core";
-
-import "./styles.css";
+import { ReactElement } from "react";
+import { Container } from "@material-ui/core";
+import { ContactForm } from "./form";
 
 export const App = (): ReactElement => {
   return (
     <Container className="App">
-      <Typography>Replace this messages with your code.</Typography>
+      <ContactForm />
     </Container>
   );
 };

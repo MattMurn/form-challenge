@@ -1,3 +1,10 @@
+### Challenge Notes.
+
+I tried to keep this as simple as possible. I decided to keep local state inside `<Form/>` to persist the form information and use state to conditionally render each component. In a real world scenario I would consider using React Router to actually navigate the user after successfully making a form submission request. I ended up import SVGs from the figma project. Tried to match the styling, ended up using css overrides for some of the colors. In a real world scenario, I would create a material theme, drop design library values into the Them config and provide at the top level, but opted to any styling overrides using `makeStyles`. 
+I didn't see any specific validations for the required input fields. So it is not possible to get the form in a state that will render the error helper text. In a real world scenario I'd ask what specific validators we'd want to use for requried fields, and udpate this.
+
+This was fun! Haven't used Material in over a year, forgot how powerful it is out of the box. 
+
 # Halo Code Challenge
 
 Your objective, if you so choose to accept, is to build a form as per the design, here:
