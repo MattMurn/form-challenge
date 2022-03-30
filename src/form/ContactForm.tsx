@@ -11,7 +11,7 @@ export const ContactForm = (): ReactElement => {
 
     return (
         <Box>
-            {formSubmitted ? <Complete handleBackClick={() => setFormSubmitted(false)} /> : <Form handleFormSubmission={() => setFormSubmitted(true)} description="Description" title="Title" />}
+            {formSubmitted ? <Complete handleBackClick={() => setFormSubmitted(false)} /> : <Form validFormSubmission={() => setFormSubmitted(true)} description="Description" title="Title" />}
         </Box>
 
     )

@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 import { FormHeader } from './FormHeader';
 import { FormField } from './FormFields';
 import { useState, ChangeEvent, SyntheticEvent } from 'react';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 
 
 const useStyles = makeStyles({
@@ -52,7 +52,7 @@ const useStyles = makeStyles({
 
 type FormProps = {
     description: string,
-    handleFormSubmission: () => void,
+    validFormSubmission: () => void,
     title: string
 }
 
@@ -64,7 +64,7 @@ export type FormState = {
     message: string
 }
 
-export const Form = ({ description, handleFormSubmission, title }: FormProps) => {
+export const Form = ({ description, validFormSubmission, title }: FormProps) => {
     const classes = useStyles();
 
     const defaultstate: FormState = {
@@ -84,7 +84,7 @@ export const Form = ({ description, handleFormSubmission, title }: FormProps) =>
         if (!firstName || !lastName || !email || !message) {
             setFormError(true);
         } else {
-            handleFormSubmission();
+            validFormSubmission();
         }
     }
 
@@ -111,7 +111,7 @@ export const Form = ({ description, handleFormSubmission, title }: FormProps) =>
                     </Box>
                 </Box>
                 <Box mr='40px' my="16px" className={classes.buttonWrapper}>
-                    <Button aria-describedby='submit-form' disabled={!formValues.firstName || !formValues.lastName || !formValues.email || !formValues.message} variant='contained' type='submit' className={classes.button} onSubmit={handleFormSubmit}>
+                    <Button aria-describedby='submit-form' disabled={!formValues.firstName || !formValues.lastName || !formValues.email || !formValues.message} variant='contained' type='submit' className={classes.button}>
                         <Typography id="submit-form">Submit</Typography>
                     </Button>
                 </Box>
