@@ -2,8 +2,9 @@ import { Box, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@mui/styles';
 import { FormHeader } from './FormHeader';
 import { FormField } from './FormFields';
-import type { FormState } from './ContactForm';
-import { SyntheticEvent } from 'react';
+import { useState, ChangeEvent, SyntheticEvent } from 'react';
+import { useForm } from 'react-hook-form';
+
 
 const useStyles = makeStyles({
     root: {
@@ -50,17 +51,50 @@ const useStyles = makeStyles({
 })
 
 type FormProps = {
-    title?: string,
-    description?: string,
-    formValues: FormState,
-    formError: boolean,
-    handleFormSubmit: (e: SyntheticEvent) => void,
-    handleFormValueChange: any
+    description: string,
+    handleFormSubmission: () => void,
+    title: string
 }
 
-export const Form = ({ handleFormSubmit, title, description, formValues, formError, handleFormValueChange }: FormProps) => {
+export type FormState = {
+    firstName: string,
+    lastName: string,
+    email: string,
+    department: string,
+    message: string
+}
+
+export const Form = ({ description, handleFormSubmission, title }: FormProps) => {
     const classes = useStyles();
 
+    const defaultstate: FormState = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        department: '',
+        message: '',
+    }
+    const [formValues, setFormValues] = useState<FormState>(defaultstate);
+    const [formError, setFormError] = useState<boolean>(false);
+
+
+    const handleFormSubmit = (e: SyntheticEvent): void => {
+        e.preventDefault();
+        const { firstName, lastName, email, message } = formValues;
+        if (!firstName || !lastName || !email || !message) {
+            setFormError(true);
+        } else {
+            handleFormSubmission();
+        }
+    }
+
+    const handleFormValueChange = (e: ChangeEvent<HTMLInputElement>): void => {
+        const { name, value } = e.target;
+        setFormValues({
+            ...formValues,
+            [name]: value,
+        });
+    }
     return (
         <form onSubmit={handleFormSubmit}>
             <Box className={classes.root} >
