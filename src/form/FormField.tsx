@@ -30,6 +30,6 @@ export const FormField = ({
     value
 }: FormFieldProps): ReactElement => {
     return (
-        <TextField className={className} margin='normal' multiline={multiLine} rows={rows} name={name} error={error} fullWidth variant='outlined' type={type} id={id} aria-label={label} label={label} value={value} onChange={handleFormValueChange} helperText={error && helperText} />
+        <TextField className={className} margin='normal' multiline={multiLine} rows={rows} name={name} error={error} fullWidth variant='outlined' type={type} id={id} aria-label={label} label={label} value={value} onChange={handleFormValueChange} helperText={error && helperText} data-testid={`test-${id}`} />
     )
 }

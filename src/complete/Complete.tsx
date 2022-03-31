@@ -42,7 +42,7 @@ export const Complete = ({ handleBackClick }: CompleteProps): ReactElement => {
                     </IconButton>
                 </Box>
                 <Box mr="40px" my="16px">
-                    <Button aria-describedby="complete-done" variant='contained' className={classes.button} onClick={() => window.location.href = 'https://media.giphy.com/media/2nwTda1ewYssE/giphy.gif'}>
+                    <Button data-testId="complete-button" aria-describedby="complete-done" variant='contained' className={classes.button} onClick={() => window.location.href = 'https://media.giphy.com/media/2nwTda1ewYssE/giphy.gif'}>
                         <Typography id="complete-done">
                             Done
                         </Typography>

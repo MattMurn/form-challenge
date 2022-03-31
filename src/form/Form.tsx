@@ -1,9 +1,8 @@
 import { Box, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@mui/styles';
 import { FormHeader } from './FormHeader';
-import { FormField } from './FormFields';
+import { FormField } from './FormField';
 import { useState, ChangeEvent, SyntheticEvent } from 'react';
-// import { useForm } from 'react-hook-form';
 
 
 const useStyles = makeStyles({
@@ -102,16 +101,16 @@ export const Form = ({ description, validFormSubmission, title }: FormProps) => 
                 <Box className={classes.inputWrapper} >
                     <Box sx={{ width: 457 }}>
                         <Box mt='8px' className={classes.nameWrapper}>
-                            <FormField className={classes.nameField} name="firstName" id="form-first-name" label="First Name" value={formValues.firstName} handleFormValueChange={handleFormValueChange} error={formError && !formValues.firstName} helperText="Please enter your first name" />
+                            <FormField className={classes.nameField} name="firstName" id="form-first-name" label="First Name" value={formValues.firstName} handleFormValueChange={handleFormValueChange} error={formError && !formValues.firstName} helperText="Please enter your name" />
                             <FormField className={classes.nameField} name="lastName" id="form-last-name" label="Last Name" value={formValues.lastName} handleFormValueChange={handleFormValueChange} error={formError && !formValues.lastName} helperText="Please enter your last name" />
                         </Box>
-                        <FormField name="email" id="form-last-email" label="Email" value={formValues.email} handleFormValueChange={handleFormValueChange} type="email" error={formError && !formValues.email} helperText="Please enter a valid email address" />
-                        <FormField name="department" id="form-last-department" label="Department" value={formValues.department} handleFormValueChange={handleFormValueChange} />
-                        <FormField name="message" multiLine rows={5} id="form-last-message" label="Message" value={formValues.message} handleFormValueChange={handleFormValueChange} error={formError && !formValues.message} helperText="Please enter a message to your support representative" />
+                        <FormField name="email" id="form-email" label="Email" value={formValues.email} handleFormValueChange={handleFormValueChange} type="email" error={formError && !formValues.email} helperText="Please enter a valid email address" />
+                        <FormField name="department" id="form-department" label="Department" value={formValues.department} handleFormValueChange={handleFormValueChange} />
+                        <FormField name="message" multiLine rows={5} id="form-information-message" label="Message" value={formValues.message} handleFormValueChange={handleFormValueChange} error={formError && !formValues.message} helperText="Please enter a message to your support representative" />
                     </Box>
                 </Box>
                 <Box mr='40px' my="16px" className={classes.buttonWrapper}>
-                    <Button aria-describedby='submit-form' disabled={!formValues.firstName || !formValues.lastName || !formValues.email || !formValues.message} variant='contained' type='submit' className={classes.button}>
+                    <Button data-testid="form-submit-button" aria-describedby='submit-form' disabled={!formValues.firstName || !formValues.lastName || !formValues.email || !formValues.message} variant='contained' type='submit' className={classes.button}>
                         <Typography id="submit-form">Submit</Typography>
                     </Button>
                 </Box>
